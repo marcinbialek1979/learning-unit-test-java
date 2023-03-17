@@ -1,14 +1,15 @@
 package pl.mb.testing.cart;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InOrder;
 import pl.mb.testing.order.Order;
 import pl.mb.testing.order.OrderStatus;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.*;
@@ -101,10 +102,10 @@ class CartServiceTest {
 
         //when
         //then
-        assertEquals(cartHandler.canHandleCart(any()), true);
-        assertEquals(cartHandler.canHandleCart(any()), false);
-        assertEquals(cartHandler.canHandleCart(any()), false);
-        assertEquals(cartHandler.canHandleCart(any()), true);
+        assertTrue(cartHandler.canHandleCart(any()));
+        assertFalse(cartHandler.canHandleCart(any()));
+        assertFalse(cartHandler.canHandleCart(any()));
+        assertTrue(cartHandler.canHandleCart(any()));
     }
 
     @Test
@@ -145,4 +146,28 @@ class CartServiceTest {
         assertThrows(IllegalArgumentException.class, () -> cartService.processCart(cart));
 
     }
+
+    @Test
+    void processCartShouldSendToPrepareWithArgumentCaptor() {
+        //given
+        Order order = new Order();
+        Cart cart = new Cart();
+        cart.addOrderToCart(order);
+
+        CartHandler cartHandler = mock(CartHandler.class);
+       // CartService cartService = new CartService(cartHandler);
+
+        ArgumentCaptor<Cart> argumentCaptor = ArgumentCaptor.forClass(Cart.class);
+        given(cartHandler.canHandleCart(cart)).willReturn(true);
+
+        //when
+        //Cart resultCart = cartService.processCart(cart);
+        //then
+        //verify(cartHandler).sendToPrepare(argumentCaptor.capture());
+        then(cartHandler).should().sendToPrepare(argumentCaptor.capture());
+        assertThat(argumentCaptor.getValue().getOrders().size(), is(1));
+
+    }
+
+
 }
