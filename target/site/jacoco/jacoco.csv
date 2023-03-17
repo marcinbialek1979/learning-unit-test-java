@@ -1,0 +1,10 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+learning-unit-test-java,pl.mb.testing,Account,8,40,2,2,3,16,2,7,0,7
+learning-unit-test-java,pl.mb.testing,OrderBackup,3,44,0,2,1,12,1,5,1,4
+learning-unit-test-java,pl.mb.testing,Address,0,9,0,0,0,4,0,1,0,1
+learning-unit-test-java,pl.mb.testing,Cart,0,52,0,2,0,14,0,6,0,5
+learning-unit-test-java,pl.mb.testing,BeforeAfterExtension,0,11,0,0,0,5,0,3,0,3
+learning-unit-test-java,pl.mb.testing,OrderStatus,0,21,0,0,0,2,0,1,0,1
+learning-unit-test-java,pl.mb.testing,IAExceptionIgnoreExtension,2,16,1,1,1,5,1,3,0,3
+learning-unit-test-java,pl.mb.testing,Meal,20,83,3,9,2,22,5,11,2,8
+learning-unit-test-java,pl.mb.testing,Order,6,41,0,2,2,12,1,7,1,6

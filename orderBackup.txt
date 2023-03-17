@@ -1,0 +1,1 @@
+Order{meals=[Meal{price=10, name='Fries'}]}
