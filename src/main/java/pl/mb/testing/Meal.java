@@ -43,6 +43,10 @@ public class Meal {
         return this.price - discount;
     }
 
+    public int sumPrice() {
+        return getPrice() * getQuantity();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
